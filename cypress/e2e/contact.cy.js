@@ -11,7 +11,9 @@ describe('contact form', () => {
             expect(el.attr('disabled')).to.be.undefined
             expect(el.text()).to.equal('Send Message')
         })
+        //cy.screenshot()
         cy.get('[data-cy="contact-input-email"]').type('test@test.com{enter}')
+        //cy.screenshot()
         cy.get('[data-cy="contact-btn-submit"]').as('submitBtn')
         cy.get('@submitBtn').contains('Sending')
         cy.get('@submitBtn').should('have.attr', 'disabled')
