@@ -18,21 +18,18 @@ describe('handles empty contact form', () => {
         cy.get('@message').focus().blur()
         cy.get('@message')
             .parent()
-            .then(el => {
-                expect(el.attr('class')).to.contains('invalid')
-            })
+            .should('have.attr', 'class').and('match', /invalid/)
         
         cy.get('@name').focus().blur()
         cy.get('@name')
             .parent()
-            .then(el => {
-                expect(el.attr('class')).to.contains('invalid')
-            })
+            .should('have.attr', 'class').and('match', /invalid/)
          cy.get('@email').focus().blur()
          cy.get('@email')
              .parent()
-             .then(el => {
-                 expect(el.attr('class')).to.contains('invalid')
+             .should((el) => {
+                expect(el.attr('class').not.to.be.undefined)
+                expect(el.attr('class').contains('invalid'))
              })
 
     })
