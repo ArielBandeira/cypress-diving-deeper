@@ -8,12 +8,12 @@ describe('handles empty contact form', () => {
 
     it('should validate the form input', () => {
 
-        cy.get('[data-cy="contact-input-message"]').as('message')
-        cy.get('[data-cy="contact-input-name"]').as('name')
-        cy.get('[data-cy="contact-input-email"]').as('email')
-        cy.get('[data-cy="contact-btn-submit"]').as('submitBtn')
+        cy.getById('contact-input-message').as('message')
+        cy.getById('contact-input-name').as('name')
+        cy.getById('contact-input-email').as('email')
+        cy.getById('contact-btn-submit').as('submitBtn')
         cy.submitForm()
-        cy.get("@submitBtn").then(el => {
+        cy.get('@submitBtn').then(el => {
             expect(el).not.have.attr('disabled')
             expect(el.text()).not.equal('Sending...')
         })
