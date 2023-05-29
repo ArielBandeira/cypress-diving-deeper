@@ -12,7 +12,7 @@ describe('handles empty contact form', () => {
         cy.get('[data-cy="contact-input-name"]').as('name')
         cy.get('[data-cy="contact-input-email"]').as('email')
         cy.get('[data-cy="contact-btn-submit"]').as('submitBtn')
-        cy.get("@submitBtn").click()
+        cy.submitForm()
         cy.get("@submitBtn").then(el => {
             expect(el).not.have.attr('disabled')
             expect(el.text()).not.equal('Sending...')
